@@ -47,6 +47,12 @@ void Heltec_ESP32::begin(bool DisplayEnable, bool LoRaEnable, bool SerialEnable,
 #endif
 
 #if defined( WIFI_Kit_32 ) || defined( WIFI_LoRa_32 ) || defined( WIFI_LoRa_32_V2 ) || defined( Wireless_Stick )
+       //OLED Reset(Pin predefined at pins_arduino.h in hardware definition) code moved from customized SSD1306Wire.h)       
+		pinMode(RST_OLED,OUTPUT);
+                digitalWrite(RST_OLED, LOW);
+                delay(50);
+                digitalWrite(RST_OLED, HIGH);
+	//	
 		display->init();
 		display->flipScreenVertically();
 		display->setFont(ArialMT_Plain_10);
